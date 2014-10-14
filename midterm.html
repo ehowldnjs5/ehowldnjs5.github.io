@@ -1,0 +1,191 @@
+Enter file contents here
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    h1{
+      color: white;
+      background:black;
+      width:400px;
+       height:60px;
+      text-align:center;  
+      padding-top:15px;
+      margin: 0 auto;
+      
+    }
+    * {font-family: "Malgun Gothic", "AppleGothic";}
+    p.name{
+      color:#666;
+      text-align:right;
+    }
+    body{
+      padding: 20px; max-width: 600px; margin: 0 auto;
+    }
+    h2{
+      color:blue;
+      text-align:right;
+      border-bottom:3px solid 
+      
+  }
+    .gr{
+      background-color:yellow;
+     font-weight: bold;
+      
+    }
+    li{
+      padding:2px;
+     
+      
+    }
+    .jj{
+      color:#666;
+      font-style: italic;
+      text-align:right;
+    }
+     .target {
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    float: right;
+   
+  </style>
+</head>
+<body>
+  <h1>
+    중간고사
+  </h1>
+  <div class="name">
+  <p class="name">
+      김지원
+    </p>
+    </div>
+  <h2>인라인 요소 목록</h2>
+ 
+  <p>
+    다음은HTML에서 자주 사용되는 요소들입니다.
+  </p>
+  
+  <ul>
+  <li><span class="gr">a</span>: 하이퍼링크(Anchor)</li>
+    <li>
+     <span class="gr"> img</span>:이미지(image)</li>
+    <li>
+      <span class="gr">span</span>:일반용도의 인라인(Span)
+    </li>
+    <li>
+      <span class="gr">strong</span>:중요(strong)
+    </li>
+    <li>
+      <span class="gr">em</span>:강조(Emphasis)
+    </li>
+     </ul>
+  <h2>
+    HTML이란?
+  </h2>
+   
+  <p>
+    HTML은 <span class="gr">하이퍼텍스트 마크업 언어
+(Hypertext Markup Language)</span>의 약자로, 웹 페이지를 만들 때 사용되는 문서 형식입니다.
+하이퍼텍스트(Hypertext)하이퍼링크(Hyperlink)를 담고 있는 문서를 뜻합니다.
+하이퍼링크는 문서들이 서로 연결되어 있는 고리를 말합니다.
+  </p>
+  <h2>
+    중첩된 목록
+  </h2>
+   
+  <p>
+    목록요소 안에 또다른 목록 요소를 중첩하여
+사용할 수 있습니다.
+  </p>
+    <ol>
+      <li>
+        홍길동 
+      
+      <ul> 
+      <li>
+        지각없음    
+      </li>
+        <li>
+          결석없음
+        </li>
+         <li>
+          과제 만점
+        </li>
+       </ul>
+      <li>
+       이몽룡
+     
+      <ul> 
+      <li>
+        지각없음    
+      </li>
+        <li>
+          결석없음
+        </li>
+         <li>
+          과제 만점
+        </li>
+       </ul>
+       </ol> 
+  
+  <h2>
+    이미지 넣기
+  </h2>
+
+   
+
+   <p><img class="target" src="http://kaywonsad.appspot.com/s/art01.jpg " alt="이미지">
+    이미지를 넣으려면
+img 요소를 사용합니다.
+  </p>
+   <p>
+    src속성에는 이미지의 경로(URL)를 적습니다.
+  </p>
+       <p>
+    이미지요소에는 항상 alt 속성을 사용하여 대체 텍스트를 명시해주어야 합니다.
+"alt"는 "Alternative text"의 약자로, 이미지를 표시 할 수 없을 때 이미지를 대신하여 나타낼 텍스트를
+뜻합니다.
+  </p>
+  <h2>CSS란?</h2>
+
+  <p>CSS는 Casxading Stylesheet의 약자이며 HTML 같은 마크업 언어로 작성된
+문서를 꾸미기 위해 사용합니다. HTML 문서의 head 요소안에 style 요소를
+넣고 css코드를 적으면 해당 문서를 다양하게 꾸밀 수 있습니다.</p>
+  <p>
+    CSS에 대한 더 자세한 설명은 <a href="CSS">CSS</a>문서를 참고하세요.
+
+  </p>
+  <h2>
+    블럭요소 목록
+  </h2>
+
+  <p>
+    다음은 HTML에서 자주 사용되는 요소들입니다.
+  </p>
+  <ol>
+    <li>
+     <span class="gr"> p</span>:단락(Paragraph)
+      </li>
+    <li>
+      <span class="gr">h1</span>:큰제목(Heading 1)
+      </li>
+    <li>
+      <span class="gr">ul</span>:순서 없는 목록(Unordered List)
+      </li>
+    <li>
+      <span class="gr">ol</span>:순서 있는 목록 (Ordered List)
+      </li>
+    <li>
+      <span class="gr">table</span>:표(table)
+      </li>
+    </ol>
+  <hr>
+  <div class=jj>
+      <p class=jj>
+        2014년10월14일중간고사,김지원작성
+      </p>
+    </div>
+</body>
+</html>
