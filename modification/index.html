@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Modification</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+	var svg;
+	var groups;
+
+	function main() {
+		document.querySelector('svg').addEventListener('click', update);
+		update();
+	}
+
+	function update() {
+		// 화면 크기 알아내기
+		var width = document.querySelector('svg').clientWidth;
+		var height = document.querySelector('svg').clientHeight;
+		var unitWidth = 40;
+		var unitHeight = 20;
+		var nx = Math.floor(width / (unitWidth * 2))
+		var ny = Math.floor(height / (unitHeight * 2))
+
+		// 
+		var data = [];
+		for(var i = 0; i < nx * ny; i++) {
+			data.push(createModification());
+		}
+
+		svg = d3.select('svg');
+		groups = svg.selectAll('g').data(data);
+		groups.enter()
+			.append('g')
+			.attr('transform', function(d, i) {return 'translate(' + ((i % nx) * 80 + 20) + ' ' + Math.floor(i / nx) * 40 + ')';})
+			.each(createEach);
+		groups
+			.each(updateEach);
+	}
+	function createModification() {
+		var ncoors = Math.floor(Math.random() * 20) + 2;
+		var coors = [];
+		for(var j = 0; j < ncoors; j++) {
+			var y = 0;
+			if(Math.random() > 0.5) {
+				y = (Math.random() - 0.5) * 30;
+			}
+			coors.push({x: 0, y: y});
+		}
+
+		var dashes = [
+			'5, 5',
+			'5, 5, 1, 5',
+			'15, 10, 5, 10, 15'
+		];
+
+		return {
+			coors: coors,
+			weight: Math.pow(Math.random(), 2) * 4.0 + 0.5,
+			linecap: Math.random() > 0.5 ? 'round' : 'square',
+			interpolate: Math.random() > 0.5 ? 'linear' : 'basis',
+			dasharray: Math.random() > 0.5 ? '1.0' : dashes[Math.floor(Math.random() * dashes.length)]
+		};
+	}
+
+	function createEach(data) {
+		var g = d3.select(this);
+		var pathData = [{x: 0, y: 20}, {x: 40, y: 20}];
+		var path = d3.svg.line()
+			.x(function(d) {return d.x;})
+			.y(function(d) {return d.y;})
+			.interpolate(data.interpolate);
+
+		g.append('circle')
+			.attr('cx', 0)
+			.attr('cy', 20)
+			.attr('r', 4)
+			.attr('class', 'circle1');
+		g.append('circle')
+			.attr('cx', 40)
+			.attr('cy', 20)
+			.attr('r', 4)
+			.attr('class', 'circle2');
+		g.append('path')
+			.attr('d', path(pathData))
+			.attr('stroke-linecap', data.linecap)
+			.attr('stroke', 'black')
+			.attr('fill', 'none')
+			.attr('stroke-dasharray', data.dasharray)
+			.attr('stroke-width', data.weight);
+	}
+	function updateEach(data) {
+		var g = d3.select(this);
+		var pathData = [];
+		for(var i = 0; i < data.coors.length; i++) {
+			var coor = data.coors[i];
+			pathData.push({
+				x: (i / (data.coors.length - 1) + (Math.random() * 0.6 - 0.3)) * 40 + coor.x,
+				y: 20 + coor.y
+			});
+		}
+		var path = d3.svg.line()
+			.x(function(d) {return d.x;})
+			.y(function(d) {return d.y;})
+			.interpolate(data.interpolate);
+		g.select('path')
+			.attr('d', path(pathData))
+			.attr('stroke-linecap', data.linecap)
+			.attr('stroke', 'black')
+			.attr('fill', 'none')
+			.attr('stroke-width', data.weight);
+		}
+
+	window.addEventListener('load', main);
+	</script>
+	<style>
+	html, body {
+		margin: 0;
+		height: 100%;
+		overflow: hidden;
+	}
+	svg {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	</style>
+	</head>
+
+	<body>
+		<svg></svg>
+	</body>
+</html>
